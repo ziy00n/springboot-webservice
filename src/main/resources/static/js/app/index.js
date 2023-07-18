@@ -5,14 +5,15 @@ var main = {
             _this.save();
         });
 
-        $('#btn-update').on('click', function () {
+        $('#btn-update').on('click', function () { // 1
             _this.update();
         });
 
         $('#btn-delete').on('click', function () {
-            _this.delete();
+                    _this.delete();
         });
     },
+    // 글 등록
     save : function () {
         var data = {
             title: $('#title').val(),
@@ -33,7 +34,8 @@ var main = {
             alert(JSON.stringify(error));
         });
     },
-    update : function () {
+    // 글 수정
+    update : function () { // 2
         var data = {
             title: $('#title').val(),
             content: $('#content').val()
@@ -42,8 +44,8 @@ var main = {
         var id = $('#id').val();
 
         $.ajax({
-            type: 'PUT',
-            url: '/api/v1/posts/'+id,
+            type: 'PUT', // 3
+            url: '/api/v1/posts/'+id, // 4
             dataType: 'json',
             contentType:'application/json; charset=utf-8',
             data: JSON.stringify(data)
@@ -54,6 +56,7 @@ var main = {
             alert(JSON.stringify(error));
         });
     },
+    // 글 삭제
     delete : function () {
         var id = $('#id').val();
 
